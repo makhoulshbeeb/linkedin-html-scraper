@@ -4,10 +4,6 @@ import * as cheerio from 'cheerio';
 import getJobDetails from './JobDetails.js';
 import CheckId from './Duplicate.js';
 
-// function transformUrl(url) {
-//   return url.replace('https://lb.linkedin.com', 'https://www.linkedin.com');
-// }
-
 // Function to fetch with retry logic
 export function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
