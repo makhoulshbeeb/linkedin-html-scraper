@@ -1,9 +1,13 @@
-import axios from 'axios';
-import * as cheerio from 'cheerio';
+//This Code returns id numbers from job search page you could also just 
+//iterate through the numbers if the plan is to push through all jobs
 
-async function JobIDs(search, nb_results){
+
+import axios from 'axios';
+import cheerio from 'cheerio';
+
+async function JobIDs(search, nb_results, page){
     const keywords = search.replace(" ","%20");
-    const url = `https://www.linkedin.com/jobs/search/?${keywords}`;
+    const url = `https://lb.linkedin.com/jobs/search/?geoId=101834488&keywords=${keywords}&start=${(page-1)*25}`;
     var res = await axios.get(url).then((response)=>{
        return response.data;
     })
@@ -15,4 +19,4 @@ async function JobIDs(search, nb_results){
     return data;
 }
 
-console.log(await JobIDs("Math Teacher",10));
+console.log(await JobIDs("Math Teacher",10,2));
