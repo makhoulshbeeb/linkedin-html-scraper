@@ -36,11 +36,3 @@ export default async function CheckId(jobId) {
   }
 }
 
-// Example usage
-CheckId("391941686")
-  .then(res => {
-    console.log('Job Exists:', res);
-  })
-  .catch(err => {
-    console.error('Error:', err);
-  });

@@ -1,20 +1,12 @@
 import { promises as fs } from 'fs';
 import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
-import { log } from 'console';
 
-// Define the URL
-
-
-let url ="https://www.linkedin.com/jobs/view/senior-international-affairs-officer-iao202430-at-holy-spirit-university-of-kaslik-usek-3963199642?position=8&pageNum=13&refId=rx2NszOjjBadyjBlKMq4aQ%3D%3D&trackingId=%2FaqMPRGuR7Evkpz88x1AMA%3D%3D&trk=public_jobs_jserp-result_search-card"
 
 // Function to fetch and parse job details
 export default async function getJobDetails(url) {
 
-
   try {
-
-
     const res = await fetch(url);
     const content = await res.text();
     if (content) {
