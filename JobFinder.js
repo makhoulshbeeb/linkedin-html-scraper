@@ -66,11 +66,11 @@ export default async function saveJobList(search, n) {
     let existingJobIds=[];
     try {
       // Read existing job list from file
-      const existingData = await fs.readFile('jobList.json', 'utf8');
-      const existingIdData = await fs.readFile('jobIds.json', 'utf8');
+      const existingData = await fs.readFile('./JSON/jobList.json', 'utf8');
+      const existingIdData = await fs.readFile('./JSON/jobIds.json', 'utf8');
       // Check if the file is empty
       if (existingData.trim() === '') {
-        console.log('jobList.json is empty. No jobs to check.');
+        console.log('./JSON/jobList.json is empty. No jobs to check.');
       } else {
         // Parse JSON data and ensure it's an array
         try {
@@ -80,17 +80,17 @@ export default async function saveJobList(search, n) {
             throw new Error('Parsed data is not an array');
           }
         } catch (jsonError) {
-          console.error('Error parsing jobList.json:', jsonError.message);
+          console.error('Error parsing ./JSON/jobList.json:', jsonError.message);
           existingJobList = [];
         }
       }
     } catch (error) {
       // Handle file not found or JSON parsing errors
       if (error.code === 'ENOENT') {
-        console.log('jobList.json file does not exist. Creating new list.');
+        console.log('./JSON/jobList.json file does not exist. Creating new list.');
         existingJobList = [];
       } else {
-        console.error('Error reading jobList.json:', error.message);
+        console.error('Error reading ./JSON/jobList.json:', error.message);
         existingJobList = [];
       }
     }
@@ -135,8 +135,8 @@ export default async function saveJobList(search, n) {
 
 
     // Write the updated job list and Ids to the file
-    await fs.writeFile('jobList.json', JSON.stringify(existingJobList, null, 2));
-    await fs.writeFile('jobIds.json', JSON.stringify(existingJobIds, null, 2));
+    await fs.writeFile('./JSON/jobList.json', JSON.stringify(existingJobList, null, 2));
+    await fs.writeFile('./JSON/jobIds.json', JSON.stringify(existingJobIds, null, 2));
     console.log('JSON file has been updated.', n);
 
   } catch (error) {

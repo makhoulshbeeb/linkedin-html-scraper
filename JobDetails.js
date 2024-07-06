@@ -61,8 +61,8 @@ export default async function getJobDetails(url) {
       };
 
       // Write the extracted details to a file
-      await fs.writeFile('jobDetails.json', JSON.stringify(jobDetails, null, 2));
-      console.log('Job details saved to jobDetails.json');
+      await fs.writeFile('./JSON/jobDetails.json', JSON.stringify(jobDetails, null, 2));
+      console.log('Job details saved to ./JSON/jobDetails.json');
 
       // Return the job details
       return jobDetails;

@@ -6,11 +6,11 @@ export default async function CheckId(jobId) {
   let existingJobIds = [];
 
   try {
-    const existingData = await fs.readFile('JobIds.json', 'utf8');
+    const existingData = await fs.readFile('./JSON/jobIds.json', 'utf8');
 
     // Check if the Id file is empty
     if (existingData.trim() === '') {
-      console.log('jobList.json is empty');
+      console.log('./JSON/jobList.json is empty');
       return false;
     }
 
@@ -24,13 +24,13 @@ export default async function CheckId(jobId) {
   } catch (error) {
     // Handle file not found or JSON parsing errors
     if (error.code === 'ENOENT') {
-      console.log('jobList.json file does not exist. Returning false.');
+      console.log('./JSON/jobList.json file does not exist. Returning false.');
       return false;
     } else if (error.name === 'SyntaxError') {
       console.error('Error parsing JSON from jobLIds.json:', error.message);
       return false;
     } else {
-      console.error('Error reading or parsing jobList.json:', error);
+      console.error('Error reading or parsing ./JSON/jobList.json:', error);
       return false;
     }
   }
