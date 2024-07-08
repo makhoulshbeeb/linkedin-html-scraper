@@ -31,7 +31,7 @@ async function fetchWithRetry(url, options, retries = 600, delayMs = 1000) {
 // Main function to save job list
 export default async function saveJobList(search, n) {
   const keywords = search.replace(" ","%20");
-  const url = `https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=${keywords}&location=Beirut&geoId=105606446&trk=public_jobs_jobs-search-bar_search-submit&position=1&pageNum=0&start=${n}`;
+  const url = `https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=${keywords}&start=${n}`;
   const options = {
     headers: {
       accept: '*/*',
